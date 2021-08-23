@@ -1,8 +1,8 @@
 // 去除banner
-var full_page = document.getElementsByClassName("full_page");
-if (full_page.length != 0) {
-  full_page[0].style.background = "transparent";
-}
+// var full_page = document.getElementsByClassName("full_page");
+// if (full_page.length != 0) {
+//   full_page[0].style.background = "transparent";
+// }
 
 // 浏览器搞笑标题
 var OriginTitle = document.title;
