@@ -7,16 +7,15 @@
 // 浏览器搞笑标题
 var OriginTitle = document.title;
 var titleTime;
-document.addEventListener('visibilitychange', function () {
+document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
-        $('[rel="icon"]').attr('href', "/funny.ico");
-        document.title = 'ヽ(●-`Д´-)ノ你要走嘛我好伤心！';
+        $('[rel="icon"]').attr('href', "/img/favicon.ico");
+        document.title = '(つェ⊂) 我藏好了哦~~';
         clearTimeout(titleTime);
-    }
-    else {
-        $('[rel="icon"]').attr('href', "/favicon.ico");
-        document.title = '(Ő∀Ő3)ノ哇喔！欢迎！' + OriginTitle;
-        titleTime = setTimeout(function () {
+    } else {
+        $('[rel="icon"]').attr('href', "/img/favicon.ico");
+        document.title = '(*´∇｀*) 被你发现啦~~' + OriginTitle;
+        titleTime = setTimeout(function() {
             document.title = OriginTitle;
         }, 2000);
     }
