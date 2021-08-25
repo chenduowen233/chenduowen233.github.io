@@ -1,3 +1,5 @@
+/* 首先去主题css文件里查看.styl文件，找到对应部件的名称，再来外挂css文件中修改 */
+
 /* 主页半透明度 */
 /* .layout_page {
     opacity: 0.9;  */
@@ -5,8 +7,8 @@
   /* } */
 
 /* 所有背景（包括侧边栏、首页卡片、文章页、页面页等） */
-#aside-content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
-/* #aside_content .card-widget,#recent-posts>.recent-post-item,.layout>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post{ */
+/* #aside-content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{ */
+    #aside-content .card-widget, #recent-posts>.recent-post-item, .layout_page>div:first-child:not(.recent-posts), .layout_post>#page, .layout_post>#post, .read-mode .layout_post>#post{
     /* 以下代表白色透明度为0.8 */
     background: rgba(255,255,255,.8);
 }
