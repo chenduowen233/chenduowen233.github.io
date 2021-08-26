@@ -1,5 +1,5 @@
 'use strict';
-const cheerio = require('cheerio');
+import { load } from 'cheerio';
 
 /**
  * 在页面插入新顶部图
@@ -14,7 +14,7 @@ function insertTopImg($) {
 }
 
 hexo.extend.filter.register('after_render:html', function(str, data){
-    let $ = cheerio.load(str, {
+    let $ = load(str, {
         decodeEntities: false
     });
     insertTopImg($);
