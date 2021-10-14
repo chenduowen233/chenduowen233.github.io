@@ -445,7 +445,7 @@
     color: #666;
   }
 
-  span.inline-tag {
+  span.p.inline-tag {
     display: inline;
     padding: .2em .6em .3em;
     font-size: 90%;
