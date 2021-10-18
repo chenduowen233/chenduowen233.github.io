@@ -421,7 +421,7 @@
     padding-top: 1rem;
   }
 
-  span.inline-tag {
+span.inline-tag {
     display: inline;
     padding: .2em .6em .3em;
     font-size: 90%;
@@ -462,7 +462,7 @@ p.grey, span.grey {
 }
 
 
-  span.p.red,
+  /* span.p.red,
   p.p.red {
     color: #fe5f58;
   }
@@ -485,7 +485,7 @@ p.grey, span.grey {
   span.p.gray,
   p.p.gray {
     color: #666;
-  }
+  } */
   /*文字标签结束*/
   
   
