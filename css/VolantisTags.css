@@ -437,27 +437,27 @@ span.inline-tag {
     background-color: var(--Color)
 }
 
-p.red, span.t-red {
+p.t-red, span.t-red {
   --Color: rgb(233, 30, 100);
   --ColorA: rgba(233, 30, 100, 0.2);
 }
 
-p.green, span.t-green {
+p.t-green, span.t-green {
   --Color: rgb(139, 195, 74);
   --ColorA: rgba(139, 195, 74, 0.2);
 }
 
-p.blue, span.t-blue {
+p.t-blue, span.t-blue {
   --Color: rgb(3, 169, 244);
   --ColorA: rgba(3, 169, 244, 0.2);
 }
 
-p.yellow, span.t-yellow {
+p.t-yellow, span.t-yellow {
   --Color: rgb(255, 193, 7);
   --ColorA: rgba(255, 193, 7, 0.2);
 }
 
-p.grey, span.t-grey {
+p.t-grey, span.t-grey {
   --Color: rgb(76, 76, 76);
   --ColorA: rgba(76, 76, 76, 0.2);
 }
