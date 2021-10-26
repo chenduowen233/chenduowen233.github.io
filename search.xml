@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Echart使用</title>
+      <link href="/Echart%E4%BD%BF%E7%94%A8/"/>
+      <url>/Echart%E4%BD%BF%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="常用网址"><a href="#常用网址" class="headerlink" title="常用网址"></a>常用网址</h2><p><strong>在ECharts官网运行编辑实例：</strong></p><p><a href="https://echarts.apache.org/examples/zh/index.html">Examples - Apache ECharts</a></p><p><strong>ECharts<code>option</code>中各参数详细配置项：</strong></p><p>[Documentation - Apache ECharts](<a href="https://echarts.apache.org/zh/option.html#title">Documentation - Apache ECharts</a>)</p><h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20211026211420723.png" alt="image-20211026211420723"></p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="Echart主题设定"><a href="#Echart主题设定" class="headerlink" title="Echart主题设定"></a>Echart主题设定</h3><p><strong>先进入echarts 官网，找到主题下载</strong></p><p><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20211026210603170.png" alt="image-20211026210603170"></p><p><strong>配置好了选择下载，选择JSON版本</strong></p><p><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20211026210749390.png" alt="image-20211026210749390"></p><p><strong>将json文件放入项目文件中并引入</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    </span><br><span class="line">import cdw from &quot;../../../../assets/theme/cdw.json&quot;;</span><br><span class="line"></span><br><span class="line">let obj = cdw;</span><br><span class="line">echarts.registerTheme(&#x27;cdw&#x27;, obj)</span><br><span class="line"></span><br><span class="line">var myChart = echarts.init(this.$refs.tc7,&#x27;cdw&#x27;);</span><br><span class="line">//var myChart = echarts.init(this.$refs.tc7,&#x27;dark&#x27;);  // 也可以直接使用官方主题</span><br><span class="line">    </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><h3 id="使用服务端返回数据的异步加载和更新"><a href="#使用服务端返回数据的异步加载和更新" class="headerlink" title="使用服务端返回数据的异步加载和更新"></a>使用服务端返回数据的异步加载和更新</h3><p><strong>详细请参考官方文档：</strong></p><p><a href="https://echarts.apache.org/zh/tutorial.html#%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%9B%B4%E6%96%B0">Documentation - Apache ECharts</a></p><p><strong>实例：</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div id=&quot;折线图&quot; style=&quot;width: 100%; height: 500px;&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">       import * as echarts from &#x27;echarts&#x27;</span><br><span class="line">       import axios from &quot;axios&quot;;</span><br><span class="line">        export default &#123;</span><br><span class="line">            data()&#123;</span><br><span class="line">                return &#123;</span><br><span class="line">                    chartColumn: null,</span><br><span class="line">                    mydata:null,</span><br><span class="line">                    salePrice: null</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            methods: &#123;</span><br><span class="line">                drawLine()&#123;</span><br><span class="line">                    this.chartColumn = echarts.init(</span><br><span class="line">                        document.getElementById(&#x27;折线图&#x27;));</span><br><span class="line"></span><br><span class="line">                    this.chartColumn.setOption(&#123;</span><br><span class="line">                    </span><br><span class="line">                title: &#123;</span><br><span class="line">                    text: &#x27;汽车价格对比阶梯折线图&#x27;,</span><br><span class="line">                    textStyle: &#123;</span><br><span class="line">                    fontSize: 25,</span><br><span class="line">                    color: &#x27;#ffffff&#x27;&#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                tooltip: &#123;</span><br><span class="line">                    trigger: &#x27;axis&#x27;</span><br><span class="line">                &#125;,</span><br><span class="line">                legend: &#123;</span><br><span class="line">                    data: [],</span><br><span class="line">                    textStyle:&#123;</span><br><span class="line">                            color: &#x27;#ffffff&#x27;//字体颜色</span><br><span class="line">                        &#125;,</span><br><span class="line">                &#125;,</span><br><span class="line">                grid: &#123;</span><br><span class="line">                    left: &#x27;3%&#x27;,</span><br><span class="line">                    right: &#x27;4%&#x27;,</span><br><span class="line">                    bottom: &#x27;3%&#x27;,</span><br><span class="line">                    containLabel: true</span><br><span class="line">                &#125;,</span><br><span class="line">                toolbox: &#123;</span><br><span class="line">                    feature: &#123;</span><br><span class="line">                        saveAsImage: &#123;&#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,</span><br><span class="line">                xAxis: &#123;</span><br><span class="line">                    type: &#x27;category&#x27;,</span><br><span class="line">                    data: []</span><br><span class="line">                &#125;,</span><br><span class="line">                yAxis: &#123;</span><br><span class="line">                    type: &#x27;value&#x27;</span><br><span class="line">                &#125;,</span><br><span class="line">                series: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        name: &#x27;&#x27;,</span><br><span class="line">                        type: &#x27;line&#x27;,</span><br><span class="line">                        step: &#x27;start&#x27;,</span><br><span class="line">                        data: []</span><br><span class="line">                    &#125;,</span><br><span class="line">                    &#123;</span><br><span class="line">                        name: &#x27;&#x27;,</span><br><span class="line">                        type: &#x27;line&#x27;,</span><br><span class="line">                        step: &#x27;middle&#x27;,</span><br><span class="line">                        data: []</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;);</span><br><span class="line">            axios.post(&quot;http://127.0.0.1:5000/carSalePrice.json&quot;).then((response) =&gt; &#123;</span><br><span class="line">                    this.salePrice = response.data;</span><br><span class="line">                    console.log(this.salePrice)</span><br><span class="line">                    this.chartColumn.setOption( //动画的配置 异步加载数据</span><br><span class="line">                        this.salePrice</span><br><span class="line">                    )</span><br><span class="line">                &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 Front-end </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> EChart </tag>
+            
+            <tag> 前端 </tag>
+            
+            <tag> Web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git常用命令清单</title>
       <link href="/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/"/>
       <url>/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%B8%85%E5%8D%95/</url>
@@ -47,9 +76,9 @@
       
         <tags>
             
-            <tag> 教程 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 教程 </tag>
             
         </tags>
       
