@@ -1,0 +1,303 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta name="baidu-site-verification" content="code-lu5ro5KG11"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>算法DAY-04 | 啦啦啦の生活馆</title><meta name="keywords" content="算法,LeetCode"><meta name="author" content="啦啦啦"><meta name="copyright" content="啦啦啦"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="算法总结 DAY_04二分专题复杂度log(n)：二分法的”代言词“ 二分模板： int l &#x3D; 0;      int r &#x3D; nums.size() - 1;      int mid;      while(l &lt;&#x3D; r)&amp;#123;          mid &#x3D; l + (r - l) &#x2F; 2;  &#x2F;&#x2F;左中点          if(target &#x3D;&#x3D; nums[mid])">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法DAY-04">
+<meta property="og:url" content="http://chenduowen233.github.io/%E7%AE%97%E6%B3%95DAY-04/index.html">
+<meta property="og:site_name" content="啦啦啦の生活馆">
+<meta property="og:description" content="算法总结 DAY_04二分专题复杂度log(n)：二分法的”代言词“ 二分模板： int l &#x3D; 0;      int r &#x3D; nums.size() - 1;      int mid;      while(l &lt;&#x3D; r)&amp;#123;          mid &#x3D; l + (r - l) &#x2F; 2;  &#x2F;&#x2F;左中点          if(target &#x3D;&#x3D; nums[mid])">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/Jewel_PSD.jpg">
+<meta property="article:published_time" content="2022-03-20T07:13:04.000Z">
+<meta property="article:modified_time" content="2022-03-23T07:30:42.428Z">
+<meta property="article:author" content="啦啦啦">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="LeetCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/Jewel_PSD.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://chenduowen233.github.io/%E7%AE%97%E6%B3%95DAY-04/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 啦啦啦","link":"链接: ","source":"来源: 啦啦啦の生活馆","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '算法DAY-04',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-03-23 15:30:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script><link rel="stylesheet" href="/css/VolantisTags.css"><link rel="stylesheet" href="/css/Beautify.css"><script src="/live2d-widget/autoload.js"></script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/70700168.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/talking/"><i class="fa-fw fas fa-comment"></i><span> 自言自语</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 爱好</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fas fa-video"></i><span> 电视剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-link"></i><span> 链接</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></li><li><a class="site-page child" href="/blog/"><i class="fa-fw fas fa-pencil-alt"></i><span> 博客</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/leetcode.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">啦啦啦の生活馆</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-book"></i><span> 文章</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/talking/"><i class="fa-fw fas fa-comment"></i><span> 自言自语</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 爱好</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/videos/"><i class="fa-fw fas fa-video"></i><span> 电视剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-link"></i><span> 链接</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></li><li><a class="site-page child" href="/blog/"><i class="fa-fw fas fa-pencil-alt"></i><span> 博客</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">算法DAY-04</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-03-20T07:13:04.000Z" title="发表于 2022-03-20 15:13:04">2022-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-03-23T07:30:42.428Z" title="更新于 2022-03-23 15:30:42">2022-03-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="算法DAY-04"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img gist" style="background-image: url(https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/leetcode.png)"></div><article class="post-content" id="article-container"><h1 id="算法总结-DAY-04"><a href="#算法总结-DAY-04" class="headerlink" title="算法总结 DAY_04"></a>算法总结 DAY_04</h1><h2 id="二分专题"><a href="#二分专题" class="headerlink" title="二分专题"></a>二分专题</h2><p>复杂度<code>log(n)</code>：二分法的”代言词“</p>
+<p><strong>二分模板</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">int</span> r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">int</span> mid;</span><br><span class="line">      <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">          mid = l + (r - l) / <span class="number">2</span>;  <span class="comment">//左中点</span></span><br><span class="line">          <span class="keyword">if</span>(target == nums[mid])</span><br><span class="line">              <span class="keyword">return</span> mid;</span><br><span class="line">          <span class="keyword">if</span>(target &lt; nums[mid])</span><br><span class="line">              r = mid - <span class="number">1</span>;</span><br><span class="line">          <span class="keyword">if</span>(target &gt; nums[mid])</span><br><span class="line">              l = mid + <span class="number">1</span>;    </span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> l;</span><br></pre></td></tr></table></figure>
+
+<p><strong>详细讲解文章链接：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/circle/article/oudzAx/">关于二分法三个模板更详细的说明</a></p>
+<h2 id="x-的平方根"><a href="#x-的平方根" class="headerlink" title="x 的平方根"></a>x 的平方根</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sqrtx/">LeetCode 69. sqrtx</a></p>
+<h3 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h3><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323133836470.png" alt="image-20220323133836470" style="zoom:80%;" />
+
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h4><p><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323134126730.png" alt="image-20220323134126730"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>, r = x, ans = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> ((<span class="keyword">long</span> <span class="keyword">long</span>)mid * mid &lt;= x) &#123;</span><br><span class="line">                ans = mid;</span><br><span class="line">                l = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<code>O(logx)</code>，即为二分查找需要的次数。</li>
+<li>空间复杂度：<code>O(1)</code>。</li>
+</ul>
+<h4 id="牛顿迭代"><a href="#牛顿迭代" class="headerlink" title="牛顿迭代"></a>牛顿迭代</h4><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323135431834.png" alt="image-20220323135431834" style="zoom:67%;" />
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">mySqrt</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> x = a;</span><br><span class="line">        <span class="keyword">while</span> (x * x &gt; a) x = (x + a / x) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">int</span>)x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<code>O(log x)</code>，此方法是二次收敛的，相较于二分查找更快。</li>
+<li>空间复杂度：<code>O(1)</code>。</li>
+</ul>
+<h4 id="雷神之锤3-算法"><a href="#雷神之锤3-算法" class="headerlink" title="雷神之锤3 算法"></a>雷神之锤3 算法</h4><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">InvSqrt</span><span class="params">(<span class="keyword">float</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">float</span> xhalf = <span class="number">0.5f</span>*x;</span><br><span class="line"><span class="keyword">int</span> i = *(<span class="keyword">int</span>*)&amp;x; <span class="comment">// get bits for floating VALUE</span></span><br><span class="line">i = <span class="number">0x5f375a86</span>- (i&gt;&gt;<span class="number">1</span>); <span class="comment">// gives initial guess y0</span></span><br><span class="line">x = *(<span class="keyword">float</span>*)&amp;i; <span class="comment">// convert bits BACK to float</span></span><br><span class="line">x = x*(<span class="number">1.5f</span>-xhalf*x*x); <span class="comment">// Newton step, repeating increases accuracy</span></span><br><span class="line"><span class="keyword">return</span> x;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>参考资料：<a target="_blank" rel="noopener" href="http://zh.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E9%80%9F%E7%AE%97%E6%B3%95">平方根倒数速算法</a></p>
+<p>​                <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74670736">快速平方根倒数算法 - 知乎 (zhihu.com)</a></p>
+<h2 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-insert-position/">LeetCode 35. search-insert-position</a></p>
+<h3 id="题目：-1"><a href="#题目：-1" class="headerlink" title="题目："></a>题目：</h3><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323140707898.png" alt="image-20220323140707898" style="zoom:80%;" />
+
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><h4 id="二分法-1"><a href="#二分法-1" class="headerlink" title="二分法"></a>二分法</h4><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323141950125.png" alt="image-20220323141950125" style="zoom:80%;" />
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(target == nums[mid])</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">if</span>(target &lt; nums[mid])</span><br><span class="line">                r = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(target &gt; nums[mid])</span><br><span class="line">                l = mid + <span class="number">1</span>;    </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<code>O(logn)</code>，其中 n 为数组的长度。二分查找所需的时间复杂度为 O(logn)。</li>
+<li>空间复杂度：<code>O(1)</code>。我们只需要常数空间存放若干变量。</li>
+</ul>
+<h2 id="在排序数组中查找元素的第一个和最后一个位置"><a href="#在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="在排序数组中查找元素的第一个和最后一个位置"></a>在排序数组中查找元素的第一个和最后一个位置</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array/">LeetCode 34. find-first-and-last-position-of-element-in-sorted-array</a></p>
+<h3 id="题目：-2"><a href="#题目：-2" class="headerlink" title="题目："></a>题目：</h3><p><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323142118802.png" alt="image-20220323142118802"></p>
+<h3 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h3><h4 id="二分法-2"><a href="#二分法-2" class="headerlink" title="二分法"></a>二分法</h4><p>因为数组都是整数，可以用<code>&#123;target-0.5, target+0.5&#125;</code>两个值来确定位置；</p>
+<p>也可以先找到第一个与<code>target</code>的值，再慢慢向两边扩直到不等于target；</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">searchRange</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">int</span> ans[<span class="number">2</span>] = &#123;<span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">double</span> t[<span class="number">2</span>] = &#123;target<span class="number">-0.5</span>, target+<span class="number">0.5</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">int</span> r = nums.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">                mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(t[i] &lt; nums[mid])</span><br><span class="line">                    r = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(t[i] &gt; nums[mid])</span><br><span class="line">                    l = mid + <span class="number">1</span>;    </span><br><span class="line">            &#125;</span><br><span class="line">            ans[i] = l - i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(ans[<span class="number">0</span>] &gt; ans[<span class="number">1</span>])</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">return</span> &#123;ans[<span class="number">0</span>],ans[<span class="number">1</span>]&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度： <code>O(logn)</code> ，其中 n 为数组的长度。二分查找的时间复杂度为O(logn)，一共会执行两次，因此总时间复杂度为 O(logn)。</li>
+<li>空间复杂度：<code>O(1)</code> 。只需要常数空间存放若干变量。</li>
+</ul>
+<h2 id="搜索二维矩阵"><a href="#搜索二维矩阵" class="headerlink" title="搜索二维矩阵"></a>搜索二维矩阵</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-a-2d-matrix/">LeetCode 74. search-a-2d-matrix</a></p>
+<h3 id="题目：-3"><a href="#题目：-3" class="headerlink" title="题目："></a>题目：</h3><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323143754118.png" alt="image-20220323143754118" style="zoom:80%;" />
+
+<h3 id="题解-3"><a href="#题解-3" class="headerlink" title="题解"></a>题解</h3><h4 id="两次二分查找"><a href="#两次二分查找" class="headerlink" title="两次二分查找"></a>两次二分查找</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = m - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">if</span>(m != <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">                mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(target == matrix[mid][n<span class="number">-1</span>])</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span>(target &lt; matrix[mid][n<span class="number">-1</span>])</span><br><span class="line">                    r = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(target &gt; matrix[mid][n<span class="number">-1</span>])</span><br><span class="line">                    l = mid + <span class="number">1</span>;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        h = l;</span><br><span class="line">        <span class="keyword">if</span>(h &gt;= m)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        l = <span class="number">0</span>;</span><br><span class="line">        r = n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n != <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">                mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span>(target == matrix[h][mid])</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">if</span>(target &lt; matrix[h][mid])</span><br><span class="line">                    r = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(target &gt; matrix[h][mid])</span><br><span class="line">                    l = mid + <span class="number">1</span>;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(target == matrix[h][<span class="number">0</span>])</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>官方题解</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> row = <span class="built_in">upper_bound</span>(matrix.<span class="built_in">begin</span>(), matrix.<span class="built_in">end</span>(), target, [](<span class="keyword">const</span> <span class="keyword">int</span> b, <span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt; &amp;a) &#123;</span><br><span class="line">            <span class="keyword">return</span> b &lt; a[<span class="number">0</span>];</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">if</span> (row == matrix.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        --row;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">binary_search</span>(row-&gt;<span class="built_in">begin</span>(), row-&gt;<span class="built_in">end</span>(), target);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<code>O(logm+logn)=O(logmn)</code>，其中 m 和 n 分别是矩阵的行数和列数。</li>
+<li>空间复杂度：<code>O(1)</code>。</li>
+</ul>
+<h4 id="一次二分查找"><a href="#一次二分查找" class="headerlink" title="一次二分查找"></a>一次二分查找</h4><p><strong>思路</strong></p>
+<p>若将矩阵每一行拼接在上一行的末尾，则会得到一个升序数组，我们可以在该数组上二分找到目标元素。</p>
+<p>代码实现时，可以二分升序数组的下标，将其映射到原矩阵的行和列上。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = m * n - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (high - low) / <span class="number">2</span> + low;</span><br><span class="line">            <span class="keyword">int</span> x = matrix[mid / n][mid % n];</span><br><span class="line">            <span class="keyword">if</span> (x &lt; target) &#123;</span><br><span class="line">                low = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; target) &#123;</span><br><span class="line">                high = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<code>O(log mn)</code>，其中 m 和 n 分别是矩阵的行数和列数。</li>
+<li>空间复杂度：<code>O(1)</code>。</li>
+</ul>
+<h2 id="搜索旋转排序数组"><a href="#搜索旋转排序数组" class="headerlink" title="搜索旋转排序数组"></a>搜索旋转排序数组</h2><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/">LeetCode 33. search-in-rotated-sorted-array</a></p>
+<h3 id="题目：-4"><a href="#题目：-4" class="headerlink" title="题目："></a>题目：</h3><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323150544769.png" alt="image-20220323150544769" style="zoom:80%;" />
+
+<h3 id="题解-4"><a href="#题解-4" class="headerlink" title="题解"></a>题解</h3><h4 id="二分法-3"><a href="#二分法-3" class="headerlink" title="二分法"></a>二分法</h4><p><strong>思路和算法</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/image-20220323150824424.png" alt="image-20220323150824424"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> mid;</span><br><span class="line">        <span class="keyword">if</span>(r == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>] == target ? <span class="number">0</span> : <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">            mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(target == nums[mid])</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">if</span>(nums[<span class="number">0</span>] &lt;= nums[mid])&#123;</span><br><span class="line">                <span class="keyword">if</span>(target &gt;= nums[<span class="number">0</span>] &amp;&amp; target &lt; nums[mid])</span><br><span class="line">                    r = mid - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    l = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(target &lt;= nums[nums.<span class="built_in">size</span>()<span class="number">-1</span>] &amp;&amp; target &gt; nums[mid])</span><br><span class="line">                    l = mid + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    r = mid - <span class="number">1</span>;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度： <code>O(logn)</code>，其中 n 为 nums 数组的大小。整个算法时间复杂度即为二分查找的时间复杂度 O(logn)。</li>
+<li>空间复杂度： <code>O(1)</code> 。我们只需要常数级别的空间存放变量。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">啦啦啦</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://chenduowen233.github.io/%E7%AE%97%E6%B3%95DAY-04/">http://chenduowen233.github.io/%E7%AE%97%E6%B3%95DAY-04/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://chenduowen233.github.io" target="_blank">啦啦啦の生活馆</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/LeetCode/">LeetCode</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/Jewel_PSD.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/wechat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E7%AE%97%E6%B3%95DAY-05/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">算法DAY-05</div></div></a></div><div class="next-post pull-right"><a href="/%E7%AE%97%E6%B3%95DAY-03/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/452.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法DAY-03</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/算法DAY-01/" title="算法DAY-01"><img class="cover" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/view.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-14</div><div class="title">算法DAY-01</div></div></a></div><div><a href="/算法DAY-02/" title="算法DAY-02"><img class="cover" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/pew.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-16</div><div class="title">算法DAY-02</div></div></a></div><div><a href="/算法DAY-03/" title="算法DAY-03"><img class="cover" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/452.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-18</div><div class="title">算法DAY-03</div></div></a></div><div><a href="/算法DAY-05/" title="算法DAY-05"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-22</div><div class="title">算法DAY-05</div></div></a></div><div><a href="/从暴力递归到动态规划/" title="从暴力递归到动态规划"><img class="cover" src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/2017_3.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-03-17</div><div class="title">从暴力递归到动态规划</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81Mzg1NS8zMDMyOA=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/70700168.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">啦啦啦</div><div class="author-info__description">分享知识，分享生活</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">19</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">22</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chenduowen233"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/chenduowen233" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="http://www.till-infinity.cn/" target="_blank" title="Blog"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93-DAY-04"><span class="toc-number">1.</span> <span class="toc-text">算法总结 DAY_04</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E4%B8%93%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">二分专题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x-%E7%9A%84%E5%B9%B3%E6%96%B9%E6%A0%B9"><span class="toc-number">1.2.</span> <span class="toc-text">x 的平方根</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-number">1.2.2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">二分法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E8%BF%AD%E4%BB%A3"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">牛顿迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%B7%E7%A5%9E%E4%B9%8B%E9%94%A43-%E7%AE%97%E6%B3%95"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">雷神之锤3 算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">搜索插入位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A-1"><span class="toc-number">1.3.1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="toc-number">1.3.2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95-1"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">二分法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">在排序数组中查找元素的第一个和最后一个位置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A-2"><span class="toc-number">1.4.1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="toc-number">1.4.2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95-2"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">二分法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5"><span class="toc-number">1.5.</span> <span class="toc-text">搜索二维矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A-3"><span class="toc-number">1.5.1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="toc-number">1.5.2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E6%AC%A1%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">两次二分查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">一次二分查找</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%97%8B%E8%BD%AC%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="toc-number">1.6.</span> <span class="toc-text">搜索旋转排序数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%EF%BC%9A-4"><span class="toc-number">1.6.1.</span> <span class="toc-text">题目：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E8%A7%A3-4"><span class="toc-number">1.6.2.</span> <span class="toc-text">题解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95-3"><span class="toc-number">1.6.2.1.</span> <span class="toc-text">二分法</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/%E7%AE%97%E6%B3%95DAY-05/" title="算法DAY-05"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法DAY-05"/></a><div class="content"><a class="title" href="/%E7%AE%97%E6%B3%95DAY-05/" title="算法DAY-05">算法DAY-05</a><time datetime="2022-03-22T07:13:23.000Z" title="发表于 2022-03-22 15:13:23">2022-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%AE%97%E6%B3%95DAY-04/" title="算法DAY-04"><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/Jewel_PSD.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法DAY-04"/></a><div class="content"><a class="title" href="/%E7%AE%97%E6%B3%95DAY-04/" title="算法DAY-04">算法DAY-04</a><time datetime="2022-03-20T07:13:04.000Z" title="发表于 2022-03-20 15:13:04">2022-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%AE%97%E6%B3%95DAY-03/" title="算法DAY-03"><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/452.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法DAY-03"/></a><div class="content"><a class="title" href="/%E7%AE%97%E6%B3%95DAY-03/" title="算法DAY-03">算法DAY-03</a><time datetime="2022-03-18T09:10:48.000Z" title="发表于 2022-03-18 17:10:48">2022-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BB%8E%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92%E5%88%B0%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="从暴力递归到动态规划"><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/2017_3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从暴力递归到动态规划"/></a><div class="content"><a class="title" href="/%E4%BB%8E%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92%E5%88%B0%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="从暴力递归到动态规划">从暴力递归到动态规划</a><time datetime="2022-03-17T02:47:56.000Z" title="发表于 2022-03-17 10:47:56">2022-03-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E7%AE%97%E6%B3%95DAY-02/" title="算法DAY-02"><img src="https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/pew.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法DAY-02"/></a><div class="content"><a class="title" href="/%E7%AE%97%E6%B3%95DAY-02/" title="算法DAY-02">算法DAY-02</a><time datetime="2022-03-16T10:32:46.000Z" title="发表于 2022-03-16 18:32:46">2022-03-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/chenduowen233/Myblog@main/img/leetcode.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 <i style="color:#FF6A6A" class="fa fa-heartbeat"></i> 啦啦啦</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="/js/VolantisTags.js"></script><script src="/js/Beautify.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/tzy13755126023/BLOG_SOURCE/theme_f/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://cdn.jsdelivr.net/npm/hexo-butterfly-clock/lib/clock.min.js"></script><!-- hexo injector body_end end --></body></html>
